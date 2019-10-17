@@ -20,7 +20,6 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.net.URL;
 import java.util.prefs.AbstractPreferences;
-import java.util.prefs.BackingStoreException;
 
 public class InlineCommentWrapperForPreferences extends IniPreferences
 {
