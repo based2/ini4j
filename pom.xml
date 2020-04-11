@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ini4j</groupId>
     <artifactId>ini4j</artifactId>
-    <version>0.5.5-SNAPSHOT</version>
+    <version>0.6.0-SNAPSHOT</version>
     <name>ini4j</name>
     <description>Java API for handling configuration files in Windows .ini format. The library includes its own Map based API, Java Preferences API and Java Beans API for handling .ini files. Additionally, the library includes a feature rich (variable/macro substitution, multiply property values, etc) java.util.Properties replacement.</description>
     <packaging>jar</packaging>
     <url>http://www.ini4j.org</url>
-    <scm>
+   <!-- <scm>
         <connection>scm:svn:svn+ssh://szkiba@svn.code.sf.net/p/ini4j/code/trunk</connection>
         <developerConnection>scm:svn:svn+ssh://szkiba@svn.code.sf.net/p/ini4j/code/trunk</developerConnection>
         <url>https://svn.code.sf.net/p/ini4j/code/trunk/</url>
@@ -33,7 +33,7 @@
     <issueManagement>
         <system>sourceforge</system>
         <url>http://sourceforge.net/tracker2/?group_id=129580</url>
-    </issueManagement>
+    </issueManagement> -->
     <licenses>
         <license>
             <name>Apache 2</name>
@@ -84,15 +84,18 @@
             <version>2.0b4</version>
             <scope>test</scope>
         </dependency>
+        <!--
         <dependency>
             <groupId>net.sf.retrotranslator</groupId>
             <artifactId>retrotranslator-runtime</artifactId>
             <version>1.2.4</version>
             <optional>true</optional>
         </dependency>
+        -->
     </dependencies>
     <properties>
-        <upload.url>scpexe://shell.sourceforge.net/home/frs/project/ini4j</upload.url>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+       <!-- <upload.url>scpexe://shell.sourceforge.net/home/frs/project/ini4j</upload.url> -->
         <check.skip>true</check.skip>
         <!-- <jdk14.home>/usr/local/j2sdk1.4.2_19</jdk14.home> -->
     </properties>
@@ -131,7 +134,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-checkstyle-plugin</artifactId>
-                        <version>2.3</version>
+                        <version>3.1.1</version>
                         <configuration>
                             <configLocation>${basedir}/src/conf/checkstyle.xml</configLocation>
                             <failOnViolation>true</failOnViolation>
@@ -148,7 +151,7 @@
                             </execution>
                         </executions>
                     </plugin>
-
+                    <!--
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-pmd-plugin</artifactId>
@@ -178,9 +181,11 @@
                             </execution>
                         </executions>
                     </plugin>
+                    -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
+                        <version>3.1.2</version>
                         <executions>
                             <execution>
                                 <id>copy-junit</id>
@@ -208,6 +213,7 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <!--
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>retrotranslator-maven-plugin</artifactId>
@@ -272,7 +278,8 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin> -->
+                    <!--
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-antrun-plugin</artifactId>
@@ -314,9 +321,11 @@
                             </execution>
                         </executions>
                     </plugin>
+                    -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
+                        <version>3.2.0</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -329,6 +338,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.2.0</version>
                         <executions>
                             <execution>
                                 <id>attach-javadoc</id>
@@ -364,10 +374,10 @@
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
             </plugin>            
-            <plugin>
+           <!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
+                <version>1.6</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
@@ -377,16 +387,16 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>            
+            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-changes-plugin</artifactId>
-                <version>2.1</version>
+                <version>2.12.1</version>
                 <inherited>false</inherited>
                 <configuration>
                     <templateDirectory>src/changes</templateDirectory>
                     <templateEncoding>UTF-8</templateEncoding>
-                    <outputDirectory>${project.build.directory}</outputDirectory>
+                    <announcementDirectory>${project.build.directory}</announcementDirectory>
                 </configuration>
                 <executions>
                     <execution>
@@ -421,8 +431,10 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
                 <executions>
                     <execution>
                         <id>sitemap-copy</id>
@@ -431,12 +443,12 @@
                         </goals>
                         <phase>pre-site</phase>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <property name="dir" value="${basedir}/target/generated-site/resources" />
                                 <mkdir dir="${dir}" />
                                 <copy file="target/sitemap.vm" tofile="${dir}/sitemap.xml" />
                                 <gzip src="${dir}/sitemap.xml" destfile="${dir}/sitemap.xml.gz" />
-                            </tasks>
+                            </target>
                         </configuration>
                     </execution>
                     <execution>
@@ -446,11 +458,11 @@
                         </goals>
                         <phase>generate-resources</phase>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <property name="dir" value="${basedir}/target" />
                                 <copy file="target/ReleaseNotes.vm" tofile="target/ReleaseNotes.txt" />
                                 <copy file="target/ChangeLog.vm" tofile="target/ChangeLog.txt" />
-                            </tasks>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>
@@ -458,9 +470,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>7</source>
-                    <target>7</target>
+                    <source>8</source>
+                    <target>8</target>
                     <encoding>UTF-8</encoding>
                     <compilerArgument>-Xlint</compilerArgument>
                 </configuration>
@@ -468,6 +481,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
@@ -475,6 +489,7 @@
 
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M4</version>
                 <configuration>
                     <systemProperties>
                         <property>
@@ -496,6 +511,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <id>zip</id>
@@ -535,6 +551,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>wagon-maven-plugin</artifactId>
@@ -579,11 +596,11 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>2.0</version>
+                <version>3.9.0</version>
                 <configuration>
                     <generatedSiteDirectory>${basedir}/target/generated-site</generatedSiteDirectory>
                 </configuration>
@@ -591,7 +608,7 @@
             <plugin>
                 <groupId>com.google.code.maven-license-plugin</groupId>
                 <artifactId>maven-license-plugin</artifactId>
-                <version>1.4.0</version>
+                <version>1.4.0</version><!-- 2.0.0 https://www.mojohaus.org/license-maven-plugin/faq.html#google-code-maven-license-plugin -->
                 <inherited>true</inherited>
                 <configuration>
                     <aggregate>true</aggregate>
@@ -625,7 +642,7 @@
                 </executions>
             </plugin>
 
-
+            <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -650,8 +667,7 @@
                     </execution>
                 </executions>
             </plugin>
-
-
+            -->
         </plugins>
         <testResources>
             <testResource>
@@ -676,6 +692,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
+                <version>3.2.0</version>
                 <configuration>
                     <inputEncoding>UTF-8</inputEncoding>
                     <linkJavadoc>true</linkJavadoc>
@@ -704,7 +721,7 @@
                 </reportSets>
 
             </plugin>
-
+<!--
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>taglist-maven-plugin</artifactId>
@@ -722,11 +739,11 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
             </plugin>
-
+-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-changes-plugin</artifactId>
-                <version>2.1</version>
+                <version>2.12.1</version>
                 <configuration>
                     <templateEncoding>UTF-8</templateEncoding>
                     <issueLinkTemplate>http://sourceforge.net/tracker2/?func=detail&amp;atid=715133&amp;group_id=129580&amp;aid=%ISSUE%</issueLinkTemplate>
@@ -743,7 +760,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.1.2</version>
+                <version>3.0.0</version>
                 <reportSets>
                     <reportSet>
                         <reports>

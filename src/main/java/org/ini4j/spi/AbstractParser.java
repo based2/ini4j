@@ -138,7 +138,7 @@ abstract class AbstractParser
 
             while ((index >= 0))
             {
-                if ((index >= 0) && ((index == 0) || (line.charAt(index - 1) != '\\')) && ((idx == -1) || (index < idx)))
+                if ( ((index == 0) || (line.charAt(index - 1) != '\\')) && ((idx == -1) || (index < idx)))
                 {
                     idx = index;
 

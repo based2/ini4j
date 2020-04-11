@@ -30,6 +30,7 @@ public class BasicProfile extends CommonMultiMap<String, Profile.Section> implem
 {
     private static final String SECTION_SYSTEM_PROPERTIES = "@prop";
     private static final String SECTION_ENVIRONMENT = "@env";
+    // TODO Intellij idea warn of redundant group nesting
     private static final Pattern EXPRESSION = Pattern.compile(
             "(?<!\\\\)\\$\\{(([^\\[\\}]+)(\\[([0-9]+)\\])?/)?([^\\[^/\\}]+)(\\[(([0-9]+))\\])?\\}");
     private static final int G_SECTION = 2;

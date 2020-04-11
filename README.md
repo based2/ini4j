@@ -4,7 +4,7 @@ The [ini4j] is a simple Java API for handling configuration files in Windows .in
 
 [![Build Status](https://travis-ci.org/facebook/ini4j.svg)](https://travis-ci.org/facebook/ini4j)
 
-This version was cloned from the project located at https://sourceforge.net/projects/ini4j/
+This version cloned from the project located at https://sourceforge.net/projects/ini4j/
 
 ## License
 
