@@ -17,8 +17,7 @@ package org.ini4j;
 
 import java.util.prefs.Preferences;
 
-class InlineCommentWrapperHelper extends java.lang.Object
-{
+class InlineCommentWrapperHelper {
 	static String get(Preferences prefs,String key, String def,char commentToken)
 	{
 		java.lang.String result = def;

@@ -18,6 +18,7 @@ package org.ini4j.spi;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 /**
  * JDK JAR Services API alap� service keres� oszt�ly.
@@ -137,7 +138,7 @@ final class ServiceFinder
 
             if (is != null)
             {
-                BufferedReader rd = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+                BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8 ));
                 String line = rd.readLine();
 
                 rd.close();

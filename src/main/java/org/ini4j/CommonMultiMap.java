@@ -115,7 +115,7 @@ public class CommonMultiMap<K, V> extends BasicMultiMap<K, V> implements Comment
     {
         StringBuilder buff = new StringBuilder();
 
-        buff.append(String.valueOf(key));
+        buff.append( key );
         buff.append(SEPARATOR);
         buff.append(category);
 
@@ -126,7 +126,7 @@ public class CommonMultiMap<K, V> extends BasicMultiMap<K, V> implements Comment
     {
         if (_meta == null)
         {
-            _meta = new TreeMap<String, Object>();
+            _meta = new TreeMap<>();
         }
 
         return _meta;

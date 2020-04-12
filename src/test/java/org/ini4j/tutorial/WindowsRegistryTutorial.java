@@ -17,8 +17,6 @@ package org.ini4j.tutorial;
 
 import org.ini4j.Reg;
 
-import static org.junit.Assert.*;
-
 import java.io.File;
 import java.io.IOException;
 

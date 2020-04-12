@@ -19,10 +19,6 @@ import org.ini4j.Ini4jCase;
 
 import org.ini4j.test.Helper;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
 public class ServiceFinderTest extends Ini4jCase

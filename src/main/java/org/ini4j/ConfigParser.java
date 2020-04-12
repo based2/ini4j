@@ -132,7 +132,7 @@ public class ConfigParser implements Serializable
     {
         String value = requireOption(sectionName, optionName);
 
-        if (!raw && (value != null) && (value.indexOf(PyIni.SUBST_CHAR) >= 0))
+        if (!raw && (value.indexOf(PyIni.SUBST_CHAR) >= 0))
         {
             value = _ini.fetch(sectionName, optionName, variables);
         }
@@ -173,37 +173,35 @@ public class ConfigParser implements Serializable
 
         if (raw)
         {
-            ret = new HashMap<String, String>(section);
+            ret = new HashMap<>( section );
         }
         else
         {
-            ret = new HashMap<String, String>();
+            ret = new HashMap<>();
             for (String key : section.keySet())
             {
                 ret.put(key, _ini.fetch(section, key, variables));
             }
         }
 
-        return new ArrayList<Map.Entry<String, String>>(ret.entrySet());
+        return new ArrayList<>( ret.entrySet() );
     }
 
     public List<String> options(String sectionName) throws NoSectionException
     {
         requireSection(sectionName);
 
-        return new ArrayList<String>(_ini.get(sectionName).keySet());
+        return new ArrayList<>( _ini.get( sectionName ).keySet() );
     }
 
-    public void read(String... filenames) throws IOException, ParsingException
-    {
+    public void read(String... filenames) throws IOException {
         for (String filename : filenames)
         {
             read(new File(filename));
         }
     }
 
-    public void read(Reader reader) throws IOException, ParsingException
-    {
+    public void read(Reader reader) throws IOException {
         try
         {
             _ini.load(reader);
@@ -214,8 +212,7 @@ public class ConfigParser implements Serializable
         }
     }
 
-    public void read(URL url) throws IOException, ParsingException
-    {
+    public void read(URL url) throws IOException {
         try
         {
             _ini.load(url);
@@ -226,8 +223,7 @@ public class ConfigParser implements Serializable
         }
     }
 
-    public void read(File file) throws IOException, ParsingException
-    {
+    public void read(File file) throws IOException {
         try
         {
             _ini.load(new FileReader(file));
@@ -238,8 +234,7 @@ public class ConfigParser implements Serializable
         }
     }
 
-    public void read(InputStream stream) throws IOException, ParsingException
-    {
+    public void read(InputStream stream) throws IOException {
         try
         {
             _ini.load(stream);
@@ -271,7 +266,7 @@ public class ConfigParser implements Serializable
 
     public List<String> sections()
     {
-        return new ArrayList<String>(_ini.keySet());
+        return new ArrayList<>( _ini.keySet() );
     }
 
     public void set(String sectionName, String optionName, Object value) throws NoSectionException

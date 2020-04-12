@@ -16,11 +16,6 @@
 package org.ini4j;
 
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -93,20 +88,19 @@ public class BasicMultiMapTest extends Ini4jCase
         assertEquals(3, set.size());
         for (Entry<String, String> e : set)
         {
-            if (e.getKey().equals(KEY1))
-            {
-                assertEquals(VALUES[2], e.getValue());
-                e.setValue(VALUES[1]);
-            }
-            else if (e.getKey().equals(KEY2))
-            {
-                assertEquals(VALUE2, e.getValue());
-                e.setValue(VALUE3);
-            }
-            else if (e.getKey().equals(KEY3))
-            {
-                assertEquals(VALUE3, e.getValue());
-                e.setValue(VALUE2);
+            switch( e.getKey() ) {
+                case KEY1:
+                    assertEquals( VALUES[ 2 ], e.getValue() );
+                    e.setValue( VALUES[ 1 ] );
+                    break;
+                case KEY2:
+                    assertEquals( VALUE2, e.getValue() );
+                    e.setValue( VALUE3 );
+                    break;
+                case KEY3:
+                    assertEquals( VALUE3, e.getValue() );
+                    e.setValue( VALUE2 );
+                    break;
             }
         }
 

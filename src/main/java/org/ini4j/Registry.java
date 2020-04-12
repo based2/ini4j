@@ -50,7 +50,7 @@ public interface Registry extends Profile
 
         static
         {
-            MAPPING = new HashMap<String, Type>();
+            MAPPING = new HashMap<>();
             for (Type t : values())
             {
                 MAPPING.put(t.toString(), t);
@@ -63,7 +63,7 @@ public interface Registry extends Profile
         public static final String REMOVE = String.valueOf(REMOVE_CHAR);
         private final String _prefix;
 
-        private Type(String prefix)
+        Type( String prefix )
         {
             _prefix = prefix;
         }

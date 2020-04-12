@@ -17,10 +17,6 @@ package org.ini4j;
 
 import org.ini4j.Registry.Type;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-
 import org.junit.Test;
 
 public class BasicRegistryKeyTest extends Ini4jCase

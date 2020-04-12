@@ -35,7 +35,7 @@ public class BasicMultiMap<K, V> implements MultiMap<K, V>, Serializable
 
     public BasicMultiMap()
     {
-        this(new LinkedHashMap<K, List<V>>());
+        this( new LinkedHashMap<>());
     }
 
     public BasicMultiMap(Map<K, List<V>> impl)
@@ -92,7 +92,7 @@ public class BasicMultiMap<K, V> implements MultiMap<K, V>, Serializable
 
     @Override public Set<Entry<K, V>> entrySet()
     {
-        Set<Entry<K, V>> ret = new HashSet<Entry<K, V>>();
+        Set<Entry<K, V>> ret = new HashSet<>();
 
         for (K key : keySet())
         {
@@ -175,7 +175,7 @@ public class BasicMultiMap<K, V> implements MultiMap<K, V>, Serializable
     {
         List<V> ret = _impl.get(key);
 
-        _impl.put(key, new ArrayList<V>(values));
+        _impl.put(key, new ArrayList<>( values ));
 
         return ret;
     }
@@ -216,7 +216,7 @@ public class BasicMultiMap<K, V> implements MultiMap<K, V>, Serializable
 
     @Override public Collection<V> values()
     {
-        List<V> all = new ArrayList<V>(_impl.size());
+        List<V> all = new ArrayList<>( _impl.size() );
 
         for (List<V> values : _impl.values())
         {
@@ -233,7 +233,7 @@ public class BasicMultiMap<K, V> implements MultiMap<K, V>, Serializable
 
         if ((values == null) && create)
         {
-            values = new ArrayList<V>();
+            values = new ArrayList<>();
             _impl.put((K) key, values);
         }
 

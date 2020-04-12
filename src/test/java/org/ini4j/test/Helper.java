@@ -108,22 +108,20 @@ public class Helper
         Profile.Section s = prof.add(dwarf.name);
 
         inject(s, dwarf, "");
-        if (dwarf.name.equals(Dwarfs.PROP_DOPEY))
-        {
-            s.put(Dwarf.PROP_WEIGHT, DwarfsData.INI_DOPEY_WEIGHT, 0);
-            s.put(Dwarf.PROP_HEIGHT, DwarfsData.INI_DOPEY_HEIGHT, 0);
-        }
-        else if (dwarf.name.equals(Dwarfs.PROP_GRUMPY))
-        {
-            s.put(Dwarf.PROP_HEIGHT, DwarfsData.INI_GRUMPY_HEIGHT, 0);
-        }
-        else if (dwarf.name.equals(Dwarfs.PROP_SLEEPY))
-        {
-            s.put(Dwarf.PROP_HEIGHT, DwarfsData.INI_SLEEPY_HEIGHT, 0);
-        }
-        else if (dwarf.name.equals(Dwarfs.PROP_SNEEZY))
-        {
-            s.put(Dwarf.PROP_HOME_PAGE, DwarfsData.INI_SNEEZY_HOME_PAGE, 0);
+        switch( dwarf.name ) {
+            case Dwarfs.PROP_DOPEY:
+                s.put( Dwarf.PROP_WEIGHT, DwarfsData.INI_DOPEY_WEIGHT, 0 );
+                s.put( Dwarf.PROP_HEIGHT, DwarfsData.INI_DOPEY_HEIGHT, 0 );
+                break;
+            case Dwarfs.PROP_GRUMPY:
+                s.put( Dwarf.PROP_HEIGHT, DwarfsData.INI_GRUMPY_HEIGHT, 0 );
+                break;
+            case Dwarfs.PROP_SLEEPY:
+                s.put( Dwarf.PROP_HEIGHT, DwarfsData.INI_SLEEPY_HEIGHT, 0 );
+                break;
+            case Dwarfs.PROP_SNEEZY:
+                s.put( Dwarf.PROP_HOME_PAGE, DwarfsData.INI_SNEEZY_HOME_PAGE, 0 );
+                break;
         }
 
         return s;
@@ -144,22 +142,20 @@ public class Helper
 
         opts.putComment(prefix + Dwarf.PROP_WEIGHT, " " + dwarf.name);
         inject(opts, dwarf, prefix);
-        if (dwarf.name.equals(Dwarfs.PROP_DOPEY))
-        {
-            opts.put(prefix + Dwarf.PROP_WEIGHT, DwarfsData.OPT_DOPEY_WEIGHT, 0);
-            opts.put(prefix + Dwarf.PROP_HEIGHT, DwarfsData.OPT_DOPEY_HEIGHT, 0);
-        }
-        else if (dwarf.name.equals(Dwarfs.PROP_GRUMPY))
-        {
-            opts.put(prefix + Dwarf.PROP_HEIGHT, DwarfsData.OPT_GRUMPY_HEIGHT, 0);
-        }
-        else if (dwarf.name.equals(Dwarfs.PROP_SLEEPY))
-        {
-            opts.put(prefix + Dwarf.PROP_HEIGHT, DwarfsData.OPT_SLEEPY_HEIGHT, 0);
-        }
-        else if (dwarf.name.equals(Dwarfs.PROP_SNEEZY))
-        {
-            opts.put(prefix + Dwarf.PROP_HOME_PAGE, DwarfsData.OPT_SNEEZY_HOME_PAGE, 0);
+        switch( dwarf.name ) {
+            case Dwarfs.PROP_DOPEY:
+                opts.put( prefix + Dwarf.PROP_WEIGHT, DwarfsData.OPT_DOPEY_WEIGHT, 0 );
+                opts.put( prefix + Dwarf.PROP_HEIGHT, DwarfsData.OPT_DOPEY_HEIGHT, 0 );
+                break;
+            case Dwarfs.PROP_GRUMPY:
+                opts.put( prefix + Dwarf.PROP_HEIGHT, DwarfsData.OPT_GRUMPY_HEIGHT, 0 );
+                break;
+            case Dwarfs.PROP_SLEEPY:
+                opts.put( prefix + Dwarf.PROP_HEIGHT, DwarfsData.OPT_SLEEPY_HEIGHT, 0 );
+                break;
+            case Dwarfs.PROP_SNEEZY:
+                opts.put( prefix + Dwarf.PROP_HOME_PAGE, DwarfsData.OPT_SNEEZY_HOME_PAGE, 0 );
+                break;
         }
     }
 

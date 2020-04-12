@@ -22,9 +22,6 @@ import org.ini4j.Ini4jCase;
 
 import org.ini4j.test.Helper;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;

@@ -18,6 +18,7 @@ package org.ini4j;
 import java.io.Serializable;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 @SuppressWarnings("PMD.ExcessivePublicCount")
 public class Config implements Cloneable, Serializable
@@ -64,7 +65,7 @@ public class Config implements Cloneable, Serializable
     public static final boolean DEFAULT_HEADER_COMMENT = true;
     public static final char DEFAULT_PATH_SEPARATOR = '/';
     public static final String DEFAULT_LINE_SEPARATOR = getSystemProperty("line.separator", "\n");
-    public static final Charset DEFAULT_FILE_ENCODING = Charset.forName("UTF-8");
+    public static final Charset DEFAULT_FILE_ENCODING = StandardCharsets.UTF_8;
     private static final Config GLOBAL = new Config();
     private static final long serialVersionUID = 2865793267410367814L;
     private boolean _comment;

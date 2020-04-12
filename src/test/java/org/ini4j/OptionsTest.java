@@ -20,13 +20,6 @@ import org.ini4j.sample.Dwarf;
 import org.ini4j.test.DwarfsData;
 import org.ini4j.test.Helper;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;

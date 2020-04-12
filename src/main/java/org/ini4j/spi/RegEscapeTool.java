@@ -23,12 +23,13 @@ import java.io.UnsupportedEncodingException;
 
 import java.nio.charset.Charset;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public class RegEscapeTool extends EscapeTool
 {
     private static final RegEscapeTool INSTANCE = ServiceFinder.findService(RegEscapeTool.class);
-    private static final Charset HEX_CHARSET = Charset.forName("UTF-16LE");
+    private static final Charset HEX_CHARSET = StandardCharsets.UTF_16LE;
     private static final int LOWER_DIGIT = 0x0f;
     private static final int UPPER_DIGIT = 0xf0;
     private static final int DIGIT_SIZE = 4;
@@ -146,10 +147,9 @@ public class RegEscapeTool extends EscapeTool
             case REG_MULTI_SZ:
                 int n = values.length;
 
-                for (int i = 0; i < n; i++)
-                {
-                    buff.append(hexadecimal(values[i]));
-                    buff.append(',');
+                for( String value : values ) {
+                    buff.append( hexadecimal( value ) );
+                    buff.append( ',' );
                 }
 
                 buff.append("00,00");
@@ -171,11 +171,10 @@ public class RegEscapeTool extends EscapeTool
         {
             byte[] bytes = string2bytes(value);
 
-            for (int i = 0; i < bytes.length; i++)
-            {
-                buff.append(Character.forDigit((bytes[i] & UPPER_DIGIT) >> DIGIT_SIZE, HEX_RADIX));
-                buff.append(Character.forDigit(bytes[i] & LOWER_DIGIT, HEX_RADIX));
-                buff.append(',');
+            for( byte aByte : bytes ) {
+                buff.append( Character.forDigit( ( aByte & UPPER_DIGIT ) >> DIGIT_SIZE, HEX_RADIX ) );
+                buff.append( Character.forDigit( aByte & LOWER_DIGIT, HEX_RADIX ) );
+                buff.append( ',' );
             }
 
             buff.append("00,00");

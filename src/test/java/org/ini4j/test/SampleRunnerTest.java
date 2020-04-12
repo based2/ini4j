@@ -63,6 +63,7 @@ import java.lang.reflect.Method;
 
 import java.nio.charset.Charset;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.regex.Matcher;
@@ -278,7 +279,7 @@ public class SampleRunnerTest
         }
         else
         {
-            charset = Charset.forName("UTF-8");
+            charset = StandardCharsets.UTF_8;
         }
 
         return new InputStreamReader(new FileInputStream(src), charset);

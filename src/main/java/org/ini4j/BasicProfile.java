@@ -340,11 +340,8 @@ public class BasicProfile extends CommonMultiMap<String, Profile.Section> implem
 
             if (isPropertyFirstUpper())
             {
-                StringBuilder buff = new StringBuilder();
-
-                buff.append(Character.toUpperCase(property.charAt(0)));
-                buff.append(property.substring(1));
-                ret = buff.toString();
+                ret = Character.toUpperCase( property.charAt( 0 ) ) +
+                        property.substring( 1 );
             }
 
             return ret;

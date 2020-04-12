@@ -76,7 +76,7 @@ class BasicProfileSection extends BasicOptionMap implements Profile.Section
 
     @Override public String[] childrenNames()
     {
-        List<String> names = new ArrayList<String>();
+        List<String> names = new ArrayList<>();
 
         for (String key : _profile.keySet())
         {

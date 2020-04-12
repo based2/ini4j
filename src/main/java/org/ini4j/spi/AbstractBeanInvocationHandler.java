@@ -114,7 +114,7 @@ public abstract class AbstractBeanInvocationHandler implements InvocationHandler
                     break;
 
                 case HAS:
-                    ret = Boolean.valueOf(hasProperty(prefix.getTail(method.getName())));
+                    ret = hasProperty( prefix.getTail( method.getName() ) );
                     break;
 
                 case ADD_CHANGE:

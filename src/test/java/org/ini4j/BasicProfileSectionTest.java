@@ -23,9 +23,6 @@ import org.ini4j.test.Helper;
 import org.ini4j.test.TaleData;
 
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
 

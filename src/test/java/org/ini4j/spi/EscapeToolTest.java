@@ -17,9 +17,6 @@ package org.ini4j.spi;
 
 import org.ini4j.Ini4jCase;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-
 import org.junit.Before;
 import org.junit.Test;
 
